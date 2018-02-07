@@ -300,6 +300,7 @@
     var container = $sc("<a href='#' class='scChromeCommand scChromeMoreSection'></a>");
     var tag = $sc("<span class='scChromeCommandText'></span>");
     var experienceEditor = Sitecore.PageModes.PageEditor.ExperienceEditor();
+    if (experienceEditor != undefined) { // added if to fix 140499
     var context = experienceEditor.generateDefaultContext();
     var itemId = this.getItemId();
     var database = context.currentContext.database;
@@ -326,6 +327,7 @@
 
     container.append(tag);
     return container;
+    } // added if to fix 140499
   },
 
   renderExpandCommand: function() {
@@ -700,6 +702,7 @@
 
   getWorkflowCommands: function () {
     var experienceEditor = Sitecore.PageModes.PageEditor.ExperienceEditor();
+    if (experienceEditor != undefined) { // added if to fix 140499
     var context = experienceEditor.generateDefaultContext();
     context.currentContext.itemId = this.getItemId();
     var result = null;
@@ -722,6 +725,7 @@
     });
 
     return { commands: workflowCommands, description: result.description, isFinalWorkflowStep: result.isFinalWorkflowStep };
+    } else return null; // added if to fix 140499
   },
 
   scrollHandler: function() {
